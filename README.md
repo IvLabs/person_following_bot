@@ -34,7 +34,7 @@ Prints help options to terminal
 Execute $python extract_images -d [output_directory] -i [input_bag_file]
 
 Extract images from input bag file.
-# 2.
+
 # Modules:
 # imagehelpers:
 1. show(image, bounding_box='None'):displays image using matplotlib with bounding box(optional).
