@@ -4,14 +4,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torchvision
 
-def show(img):
-    img = img.cpu()
-    npimg = img.detach().numpy()
-    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+def show(img,bounding_box='None'):
+    try:
+        img = img.cpu()
+        npimg = img.detach().numpy()
+    except:
+        print('CPU ')
+        pass
+
+    _,obj = plt.subplots(1)
+    obj.imshow(np.transpose(img, (0, 1, 2)))
+    if bounding_box != 'None':
+        rect = patches.Rectangle(bounding_box[0:2],bounding_box[2]-bounding_box[0],bounding_box[3]-bounding_box[1],linewidth=1,edgecolor='w',facecolor='none')
+        obj.add_patch(rect)
+
     plt.show()
 
-def save(a, img, path):
 
+def save(a, img, path):
     img = img[0].cpu()
     npimg = img.detach().numpy()
     io.imsave(str(path) + str(a) + '.jpg', np.transpose(npimg, (1, 2, 0)))
