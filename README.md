@@ -10,15 +10,15 @@ Found this python module:https://pypi.org/project/pyrealsense2/
 # Instructions:
 
 # Dependencies:
-# Anaconda:
+Anaconda:
 https://docs.anaconda.com/anaconda/install/linux/
-# OpenCV:
+OpenCV:
 https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html
-# Pytorch:
+Pytorch:
 https://pytorch.org/
 
 # Function:
-# 1.change_res.py
+1.change_res.py
 Execute $python change_res.py -h [help]
 
 Prints help options to terminal
@@ -27,7 +27,7 @@ Execute $python change_res.py -d [output_directory] -i [input_directory] -hd [he
 
 Change resolution of input images (from input_directory) to images of resolution (hd, wd) (to output_directory)
 
-# 2.extract_images.py
+2.extract_images.py
 Execute $python extract_images.py -h [help]
 
 Prints help options to terminal
@@ -36,7 +36,7 @@ Execute $python extract_images -d [output_directory] -i [input_bag_file]
 
 Extract images from input bag file.
 
-# 3.xmlparser.py
+3.xmlparser.py
 Execute $python xmlparser.py -h [help]
 
 Prints help options to terminal
