@@ -3,6 +3,9 @@ import argparse
 import os
 
 def main():
+	if not os.path.exists(args.out_dir):
+		os.mkdir(args.out_dir)
+        print('Created out_dir')
 	files = os.listdir(args.input_dir)
 	for name in files:
 		try:

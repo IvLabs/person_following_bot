@@ -6,21 +6,21 @@ import torchvision
 import matplotlib.patches as patches
 
 def show(img,bounding_box='None'):
+    plt.close('all')
     try:
         img = img.cpu()
         npimg = img.detach().numpy()
     except:
-        print('CPU ')
+        print('No associated gradients ')
         pass
 
     _,obj = plt.subplots(1)
     obj.imshow(np.transpose(img, (1, 2, 0)))
     if bounding_box != 'None':
-        rect = patches.Rectangle(bounding_box[0:2],bounding_box[2]-bounding_box[0],bounding_box[3]-bounding_box[1],linewidth=1,edgecolor='w',facecolor='none')
+        rect = patches.Rectangle(bounding_box[0:2],bounding_box[2]-bounding_box[0],bounding_box[3]-bounding_box[1],linewidth=2,edgecolor='r',facecolor='none')
         obj.add_patch(rect)
-
-    plt.show()
-    plt.close('all')
+    plt.show(block=False)
+    plt.pause(0.09)
 
 
 def save(a, img, path):

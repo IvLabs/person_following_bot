@@ -44,9 +44,9 @@ profile = pipe.start(config)
 align_to = rs.stream.color
 align = rs.align(align_to)
 rgbd = torch.zeros(1,4,360,640)
+i=0
 
 print('################|Initialization seguence completed.|################')
-
 try:
     while(1):
         # Get frameset of color and depth
@@ -72,13 +72,17 @@ try:
 
         # Pass obtained image to model
         bounding_box = detector(rgbd)
-        bb = list(map(int, bounding_box[0,0,0,:]))
-        im.show(rgb,bb)
+        bb = list(map(int, bounding_box[0,0,0,:]*1000))
+        if i%20 ==9:
+            im.show(rgb,bb)
+            print(bounding_box*1000)
+
 
         # Find Coordinates for target person
         region = [int((bounding_box[0,0,0,0] + bounding_box[0,0,0,2])/2), int((bounding_box[0,0,0,1] + bounding_box[0,0,0,3])/2)]
         y_dist = d[region[0]:region[0]+5, region[1]:region[1]+5]
         y_dist = beta*y_dist/5;
         x_dist = abs(region[1]-240)*alpha*y_dist
+        i = i+ 1
 finally:
     pipe.stop()

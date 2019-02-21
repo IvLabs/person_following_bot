@@ -1,7 +1,7 @@
 from torch.utils.data import Dataset, DataLoader
 from skimage import io, transform
+from numpy import genfromtxt as gft
 import os
-import xml.etree.ElementTree as ET
 
 class RGBD_dataset(Dataset):
     """RGBD dataset."""
@@ -19,8 +19,8 @@ class RGBD_dataset(Dataset):
         self.depth_path = path_depth
         self.annotations_path = path_annotations
         self.transform = transform
-        self.list_rgb =  os.listdir(path_rgb)
-        self.list_depth =  os.listdir(path_depth)
+        self.list_rgb = os.listdir(path_rgb)
+        self.list_depth = os.listdir(path_depth)
         self.list_annotations = os.listdir(path_annotations)
 
     def __len__(self):
@@ -28,15 +28,12 @@ class RGBD_dataset(Dataset):
 
     def __getitem__(self, idx):
         annotations_name = os.path.join(self.annotations_path, self.list_annotations[idx])
-        tree = ET.parse(annotations_name)
-        root = tree.getroot()
-        ANNOTATIONS = [ root[6][4][0].text, root[6][4][1].text, root[6][4][2].text, root[6][4][3].text]
-        ANNOTATIONS = list(map(int, ANNOTATIONS))
-        rgb_name = os.path.join(self.rgb_path, self.list_annotations[idx].strip('.xml') + '.jpg')
+        rgb_name = os.path.join(self.rgb_path, self.list_annotations[idx].strip('.csv') + '.jpg')
+        depth_name = os.path.join(self.depth_path, self.list_annotations[idx].strip('.csv') + '.jpg')
+        ANNOTATIONS = gft(annotations_name, delimiter=',')
         RGB = io.imread(rgb_name)
-        depth_name = os.path.join(self.depth_path, self.list_annotations[idx].strip('_rgb.xml') + '_depth.jpg')
         DEPTH = io.imread(depth_name)
         if self.transform:
             RGB = self.transform(RGB)
             DEPTH = self.transform(DEPTH)
-        return RGB,DEPTH, ANNOTATIONS
+        return RGB, DEPTH, ANNOTATIONS

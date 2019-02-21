@@ -9,6 +9,7 @@ import os
 def main():
     if not os.path.exists(args.directory):
         os.mkdir(args.directory)
+        print('Created out_dir')
     try:
         config = rs.config()
         rs.config.enable_device_from_file(config, args.input)
