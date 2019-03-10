@@ -25,7 +25,7 @@ detector = m.DETECTOR()
 
 #Load saved model
 try:
-    checkpoint = torch.load('./parameters/detector.tar')
+    checkpoint = torch.load('./parameters/model5.tar')
     detector.load_state_dict(checkpoint['detector_dict'])
     print("###################|Loaded saved model|#######################")
 except:
@@ -72,10 +72,10 @@ try:
 
         # Pass obtained image to model
         bounding_box = detector(rgbd)
-        bb = list(map(int, bounding_box[0,0,0,:]*1000))
+        bb = list(map(int, bounding_box[0,0,0,:]))
         if i%20 ==9:
-            im.show(rgb,bb)
-            print(bounding_box*1000)
+            im.show(rgb, bb)
+            print(bounding_box)
 
 
         # Find Coordinates for target person
