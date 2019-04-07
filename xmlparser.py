@@ -9,7 +9,7 @@ def main():
 	cntr = 0
 	if not os.path.exists(args.out_dir):
 		os.mkdir(args.out_dir)
-        print('Created out_dir')
+		print('Created out_dir')
 	files = os.listdir(args.input_dir)
 	for f_name in files:
 		try:

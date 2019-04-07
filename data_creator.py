@@ -65,7 +65,7 @@ def main():
             rgb = np.transpose(rgb,(2,0,1))
             depth = np.asanyarray(aligned_depth_frame.get_data(),dtype=np.uint16)
             depth = depth
-            im.show(depth,args.bb)
+            im.show(rgb,args.bb)
             im.rgbsave(i, rgb, str('./' + args.out_rdir))
             im.dsave(i, depth, str('./' + args.out_ddir))
             np.savetxt('./' + args.annotations_dir + '/' + str(i) + '.csv', args.bb, delimiter=',')
