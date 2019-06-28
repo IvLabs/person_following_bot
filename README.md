@@ -50,3 +50,14 @@ Parse xml files to csv files and write (to output_directory). Change child addre
 1. show(image, bounding_box='None'):displays image using matplotlib with bounding box(optional).
 
 coordinates of bounding box are optional it should it in the form:[Xmin,Ymin,Xmax,Ymax]
+
+# Running across multiple machines:
+# for host machine ( machine running roscore):
+export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
+export ROS_IP=192.168.0.123 (replace with host machine ip)
+export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)
+
+# for remote machine:
+export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
+export ROS_IP=192.168.0.123 (replace with local machine ip)
+export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)
