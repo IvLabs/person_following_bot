@@ -35,7 +35,7 @@ def get_rgbd():
     return rgb.transpose(2,0,1), depth.tranpose(1,0)
 
 
-def turtle_controller(frame, output):
+def turtle_controller(frame, output, VERBOSE=False):
     alpha = 1;
 
     c1 = tuple(output[0,1:3].int())
@@ -49,5 +49,8 @@ def turtle_controller(frame, output):
 
     linear_speed = (320 - int((box[0]+box[2])/2))/320
     turn_speed = (240 - int((box[1]+box[3])/2))/240
+
+    if VERBOSE:
+        print('Linear Speed: ' + str(linear_speed) + ' | Turn Speed: ' + str(turn_speed))
 
     return linear_speed, turn_speed, distance

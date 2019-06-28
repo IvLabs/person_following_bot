@@ -6,38 +6,27 @@
 #
 from __future__ import division
 print('#####################| INITILIZATION SEQUENCE STARTED |##################')
-import sys
 import rospy
-from std_msgs.msg import String
-from std_msgs.msg import String
+import message_filters
+import sys, select, tty, time, argparse, torch
 from sensor_msgs.msg import CompressedImage
 from geometry_msgs.msg import Twist
-from std_msgs.msg import Int32
-import message_filters
-import sys, select, tty
 try:
+    sys.path.append('yolo_dep/')
+    sys.path.append('other_dep/')
     sys.path.remove('/opt/ros/kinetic/lib/python2.7/dist-packages')
 except:
     pass
-sys.path.append('yolo_dep/')
-import time
-import torch
-import torch.nn as nn
-from torch.autograd import Variable
-import numpy as np
 import cv2
+import torch.nn as nn
+import numpy as np
+import pickle as pkl
+import rshelper as rsh
+import pyrealsense2 as rs
+from torch.autograd import Variable
 from util import *
 from darknet import Darknet
 from preprocess import prep_image, inp_to_image, letterbox_image
-import pandas as pd
-import random
-import pickle as pkl
-import argparse
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import rshelper as rsh
-import pyrealsense2 as rs
-from statistics import mean
 
 
 def write(x, img):
@@ -88,17 +77,14 @@ def arg_parse():
 
 
 def get_bounding_box(msg, _):
+    """
+    Callback function to get bounding box coordinates
+    """
     global output
     global frames
 
     frame = cv2.imdecode(np.frombuffer(msg.data, dtype=np.uint8), 1)
     cv2.waitKey(1)
-    # if key & 0xFF == ord('q'):
-    #     print('###############################| QUIT |#########################################')
-    #     break
-
-    # if msg.format == "rgb":
-    # print(msg.format,"   ", msg.header.stamp)
     rgb = frame
     img, orig_im, dim = prep_image(rgb, inp_dim)
     im_dim = torch.FloatTensor(dim).repeat(1,2)
@@ -112,7 +98,6 @@ def get_bounding_box(msg, _):
     output = model(Variable(img, volatile = True), CUDA)
     output = write_results(output, confidence, num_classes, nms = True, nms_conf = nms_thesh)
 
-    # if type(output) == int:
     frames += 1
     # print("FPS of the video is {:5.2f}".format( frames / (time.time() - start)))
 
@@ -135,22 +120,22 @@ def get_bounding_box(msg, _):
 
 
 def get_control(_, msg):
-
-    # print(msg.format," ", msg.header.stamp)
+    """
+    Callback function to publish turtlebot controlling messages
+    """
 
     frame = cv2.imdecode(np.frombuffer(msg.data, dtype=np.uint8), 1)
-    linear, turn, distance = rsh.turtle_controller(frame, output)
-    # print('distance of person: '+ str(distance) + ' | linear speed: ' + str(linear) + ' | turn speed: ' + str(turn))
+    cv2.waitKey(1)
+    linear, turn, distance = rsh.turtle_controller(frame, output, VERBOSE=False)
 
-    pub = rospy.Publisher('/cmd_vel_mux/input/teleop', Twist, queue_size=10)
     twist = Twist()
     twist.linear.x = 3*linear; twist.linear.y = 0; twist.linear.z = 0
     twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 2*turn
     try:
         pub.publish(twist)
-        # print(twist)
     except:
         print('Could not publish cmd_vel')
+
 
 if __name__ == '__main__':
     classes = load_classes('yolo_dep/data/coco.names')
@@ -188,12 +173,11 @@ if __name__ == '__main__':
 
     print('Press Ctrl+C for exiting')
     rospy.init_node('detector', anonymous=True)
-    # pub = rospy.Publisher('~cmd_vel', Twist, queue_size=1)
-    # rospy.Subscriber("/output/image_raw/compressed", CompressedImage, get_control, queue_size=1, buff_size=2**24)
-
-
-    sub_rgb = message_filters.Subscriber("/output/image_raw/compressed_rgb", CompressedImage, queue_size=1, buff_size=2**25)
-    sub_depth = message_filters.Subscriber("/output/image_raw/compressed_depth", CompressedImage, queue_size=1, buff_size=2**25)
+    pub = rospy.Publisher('/cmd_vel_mux/input/teleop', Twist, queue_size=10)
+    sub_rgb = message_filters.Subscriber("/output/image_raw/compressed_rgb",
+                                         CompressedImage, queue_size=1, buff_size=2**25)
+    sub_depth = message_filters.Subscriber("/output/image_raw/compressed_depth",
+                                           CompressedImage, queue_size=1, buff_size=2**25)
     ts = message_filters.TimeSynchronizer([sub_rgb, sub_depth], 10)
     ts.registerCallback(get_bounding_box)
     ts.registerCallback(get_control)
