@@ -1,12 +1,10 @@
-##### Follower Python3.6
+ ##### Follower Python3.6
 #   Basic Follower using only detection - Yes
 #   Tested Tracking Algorithms -
 #   GAN Trained to obtain depth -
 #
 #
 from __future__ import division
-from functools import reduce
-
 print('#####################| INITILIZATION SEQUENCE STARTED |##################')
 import sys
 import rospy
@@ -89,10 +87,30 @@ def arg_parse():
     return parser.parse_args()
 
 
+config = rs.config()
+rs.config.enable_device_from_file(config, '20190722_223724.bag')
+pipeline = rs.pipeline()
+#config.enable_stream(rs.stream.depth, 640, 320, rs.format.z16, 30)
+#config.enable_stream(rs.stream.color, 640, 320, rs.format.rgb8, 30)
+pipeline.start(config)
+i = 0
+
+while True:
+    print("Saving frame:", i)
+    frames = pipeline.wait_for_frames()
+    depth_frame = frames.get_depth_frame()
+    depth_image = np.asanyarray(depth_frame.get_data())
+#cv.imwrite(args.directory + "/" + str(i).zfill(6) + "depth.png", depth_image)
+    rgb_frame = frames.get_color_frame()
+    rgb_image = np.asanyarray(rgb_frame.get_data())
+    cv.imshow('this', rgb_image)
+    cv.waitKey(1)
+
 
 def get_bounding_box(msg, _):
     global output
     global frames
+
     frame = cv2.imdecode(np.frombuffer(msg.data, dtype=np.uint8), 1)
     cv2.waitKey(1)
     # if key & 0xFF == ord('q'):

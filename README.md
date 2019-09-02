@@ -54,10 +54,22 @@ coordinates of bounding box are optional it should it in the form:[Xmin,Ymin,Xma
 # Running across multiple machines:
 # for host machine ( machine running roscore):
 export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
+<<<<<<< HEAD
+
 export ROS_IP=192.168.0.123 (replace with host machine ip)
+
+=======
+export ROS_IP=192.168.0.123 (replace with host machine ip)
+>>>>>>> 014689f97da4629fee90b2354cf467253be84ae6
 export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)
 
 # for remote machine:
 export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
+<<<<<<< HEAD
+
 export ROS_IP=192.168.0.123 (replace with local machine ip)
+
+=======
+export ROS_IP=192.168.0.123 (replace with local machine ip)
+>>>>>>> 014689f97da4629fee90b2354cf467253be84ae6
 export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)

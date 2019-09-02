@@ -41,7 +41,7 @@ def turtle_controller(frame, output):
     c1 = tuple(output[0,1:3].int())
     c2 = tuple(output[0,3:5].int())
     box = [c1[0].item(),c1[1].item(), c2[0].item(),c2[1].item()]
-
+    print(box)
     try:
         distance = mean(frame[int((box[0]+box[2])/2),int((box[1]+box[3])/2)]*alpha)
     except:
