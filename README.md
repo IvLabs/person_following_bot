@@ -19,29 +19,29 @@ https://pytorch.org/
 
 # Function:
 # 1.change_res.py
-Execute $python change_res.py -h [help]
+Execute ```python change_res.py -h [help]```
 
 Prints help options to terminal
 
-Execute $python change_res.py -d [output_directory] -i [input_directory] -hd [height_output_img] -wd [width_output_img]
+Execute ```python change_res.py -d [output_directory] -i [input_directory] -hd [height_output_img] -wd [width_output_img]```
 
 Change resolution of input images (from input_directory) to images of resolution (hd, wd) (to output_directory)
 
 # 2.extract_images.py
-Execute $python extract_images.py -h [help]
+Execute ```python extract_images.py -h [help]```
 
 Prints help options to terminal
 
-Execute $python extract_images -d [output_directory] -i [input_bag_file]
+Execute ```python extract_images -d [output_directory] -i [input_bag_file]```
 
 Extract images from input bag file.
 
 # 3.xmlparser.py
-Execute $python xmlparser.py -h [help]
+Execute ```python xmlparser.py -h [help]```
 
 Prints help options to terminal
 
-Execute $python xmlparser.py -d [output_directory] -i [input_directory]
+Execute ```python xmlparser.py -d [output_directory] -i [input_directory]```
 
 Parse xml files to csv files and write (to output_directory). Change child address to parse specific end.
 
@@ -53,23 +53,13 @@ coordinates of bounding box are optional it should it in the form:[Xmin,Ymin,Xma
 
 # Running across multiple machines:
 # for host machine ( machine running roscore):
-export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
-<<<<<<< HEAD
+```export ROS_MASTER_URI=http://192.168.0.113:11311``` (replace with host machine ip)
 
-export ROS_IP=192.168.0.123 (replace with host machine ip)
+```export ROS_IP=192.168.0.123 ```(replace with host machine ip)
 
-=======
-export ROS_IP=192.168.0.123 (replace with host machine ip)
->>>>>>> 014689f97da4629fee90b2354cf467253be84ae6
-export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)
+```export ROS_HOSTNAME=192.168.0.123 ``` (replace with host machine ip)
 
 # for remote machine:
-export ROS_MASTER_URI=http://192.168.0.113:11311 (replace with host machine ip)
-<<<<<<< HEAD
-
-export ROS_IP=192.168.0.123 (replace with local machine ip)
-
-=======
-export ROS_IP=192.168.0.123 (replace with local machine ip)
->>>>>>> 014689f97da4629fee90b2354cf467253be84ae6
-export ROS_HOSTNAME=192.168.0.123 (replace with host machine ip)
+```export ROS_MASTER_URI=http://192.168.0.113:11311 ```(replace with host machine ip)
+```export ROS_IP=192.168.0.123``` (replace with local machine ip)
+```export ROS_HOSTNAME=192.168.0.123``` (replace with host machine ip)
