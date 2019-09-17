@@ -1,5 +1,5 @@
 # Person Following Robot
-
+* This Repository will be updated once I receive updates on my submission for a research conference*
 # Overview:
 This is a deep learning based robot which follows a person in dynamic environment. Currrently I am usign a Turtle-bot which is an easy to use robotic development platform.
 
