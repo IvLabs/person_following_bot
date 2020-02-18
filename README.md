@@ -1,65 +1,28 @@
 # Person Following Robot
-* *This Repository will be updated once I receive updates on my submission for a research conference*
-# Overview:
-This is a deep learning based robot which follows a person in dynamic environment. Currrently I am usign a Turtle-bot which is an easy to use robotic development platform.
+This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020'. [Link to paper](https://www.springer.com/in/book/9789811536380)
 
-# Challenges:
-Setting live realsense stream in python code:
-Found this python module:https://pypi.org/project/pyrealsense2/
+## Results:
+![](https://github.com/khush3/person_following_robot/blob/master/result.gif)
+## Abstract:
+Helper robots are widely used in various situations, for ex-ample at airports and railway stations. This paper presents a pipeline to multiplex the tracking and detection of a person in dynamic environments using a stereo camera in real-time. Recent developments in object detection using ConvNets have led to robust person detection. These deep convolutional neural networks generally fail to run with high frames rates on devices with less computing power. Trackers are also used to retain the identity of the target person as well as impose fewer constraints on hardware. A concept of multiplexed detection and tracking is used which makes the pipeline faster by many folds. TurtleBot2 is used for prototyping the robot and tuning of the motion controller. Robot Operating System (ROS) is used to set up communication be-tween various nodes of the pipeline. The results found were comparable to current state-of-the-art person followers and can be readily used in day to day life.
 
 # Instructions:
-
-# Dependencies:
-# Anaconda:
-https://docs.anaconda.com/anaconda/install/linux/
-# OpenCV:
-https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html
-# Pytorch:
-https://pytorch.org/
-
-# Function:
-# 1.change_res.py
-Execute ```python change_res.py -h [help]```
-
-Prints help options to terminal
-
-Execute ```python change_res.py -d [output_directory] -i [input_directory] -hd [height_output_img] -wd [width_output_img]```
-
-Change resolution of input images (from input_directory) to images of resolution (hd, wd) (to output_directory)
-
-# 2.extract_images.py
-Execute ```python extract_images.py -h [help]```
-
-Prints help options to terminal
-
-Execute ```python extract_images -d [output_directory] -i [input_bag_file]```
-
-Extract images from input bag file.
-
-# 3.xmlparser.py
-Execute ```python xmlparser.py -h [help]```
-
-Prints help options to terminal
-
-Execute ```python xmlparser.py -d [output_directory] -i [input_directory]```
-
-Parse xml files to csv files and write (to output_directory). Change child address to parse specific end.
-
-# Modules:
-# imagehelpers:
-1. show(image, bounding_box='None'):displays image using matplotlib with bounding box(optional).
-
-coordinates of bounding box are optional it should it in the form:[Xmin,Ymin,Xmax,Ymax]
-
-# Running across multiple machines:
-# for host machine ( machine running roscore):
+### Setting up remote server for faster processing:
+##### Host Machine (machine running roscore):
 ```export ROS_MASTER_URI=http://192.168.0.113:11311``` (replace with host machine ip)
-
 ```export ROS_IP=192.168.0.123 ```(replace with host machine ip)
-
 ```export ROS_HOSTNAME=192.168.0.123 ``` (replace with host machine ip)
 
-# for remote machine:
+##### Remote Machine:
 ```export ROS_MASTER_URI=http://192.168.0.113:11311 ```(replace with host machine ip)
 ```export ROS_IP=192.168.0.123``` (replace with local machine ip)
 ```export ROS_HOSTNAME=192.168.0.123``` (replace with host machine ip)
+
+## Dependencies:
+##### Anaconda: [link](https://docs.anaconda.com/anaconda/install/linux/)
+##### OpenCV: [link](https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html)
+##### PyTorch: [link](https://pytorch.org/)
+##### pyrealsense2: [link](https://pypi.org/project/pyrealsense2/)
+
+
+
