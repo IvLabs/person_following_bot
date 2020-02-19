@@ -25,5 +25,6 @@ Helper robots are widely used in various situations, for ex-ample at airports an
 ##### pyrealsense2: [link](https://pypi.org/project/pyrealsense2/)
 
 ## Contributors:
-Khush Agrawal
-Rohit Lal
+[Khush Agrawal](https://khush3.github.io/)
+
+[Rohit Lal](https://github.com/take2rohit)
