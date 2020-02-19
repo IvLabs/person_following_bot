@@ -1,5 +1,5 @@
 # Person Following Robot
-This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020'. [paper](https://www.springer.com/in/book/9789811536380)
+This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020. [paper](https://www.springer.com/in/book/9789811536380)
 
 ## Results:
 ![](https://github.com/khush3/person_following_bot/blob/master/result.gif)
