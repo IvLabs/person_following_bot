@@ -1,5 +1,6 @@
 # Person Following Robot
-This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020. [paper](https://www.springer.com/in/book/9789811536380)
+This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020. 
+If you are using this repository please this paper: [paper](https://www.springer.com/in/book/9789811536380)
 
 ## Results:
 ![](https://github.com/khush3/person_following_bot/blob/master/result.gif)
@@ -19,10 +20,10 @@ Helper robots are widely used in various situations, for ex-ample at airports an
 ```export ROS_HOSTNAME=192.168.0.123``` (replace with host machine ip)
 
 ## Dependencies:
-##### Anaconda: [link](https://docs.anaconda.com/anaconda/install/linux/)
-##### OpenCV: [link](https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html)
-##### PyTorch: [link](https://pytorch.org/)
-##### pyrealsense2: [link](https://pypi.org/project/pyrealsense2/)
+- Anaconda: [link](https://docs.anaconda.com/anaconda/install/linux/)
+- OpenCV: [link](https://docs.opencv.org/trunk/d7/d9f/tutorial_linux_install.html)
+- PyTorch: [link](https://pytorch.org/)
+- pyrealsense2: [link](https://pypi.org/project/pyrealsense2/)
 
 ## Contributors:
 [Khush Agrawal](https://khush3.github.io/)
