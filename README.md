@@ -1,6 +1,7 @@
 # Person Following Robot
 This project has been presented in the 'International Conference on Advances in Mechanical Engineering, 2020. 
-<br>If you are using this repository please cite this paper: [paper](https://www.springer.com/in/book/9789811536380)
+<br>If you are using this repository please cite this paper: 
+[Person Following Mobile Robot using Multiplexed Detection and Tracking](https://www.springer.com/in/book/9789811536380)
 
 # Demo
 [YouTube Link](https://youtu.be/XnrbU1050ls)
