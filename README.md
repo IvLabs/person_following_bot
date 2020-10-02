@@ -1,4 +1,5 @@
 # Person Following Robot
+
 This repo aims to make a mobile robot that can follow a person autonomously. Hand gesture for stopping/starting has also added for easier control of this robot. Attempts have been made to reduce the effect of occlusion.
 <br>If you are using this repository please cite this paper: [paper](https://link.springer.com/chapter/10.1007/978-981-15-3639-7_98) and Star our repo.
 
