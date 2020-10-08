@@ -5,7 +5,7 @@
 
 This repository aims to make an algoirthm to follow a person autonomously. This algorithm has been successfully tested on a TurtleBot2. Hand gesture for stopping/starting has also added for easier target acquisition. Attempts have been made to reduce the effect of occlusion.
 
-If you are using this repository please [cite](#citations) our [paper](https://link.springer.com/chapter/10.1007/978-981-15-3639-7_98) and star our repo. You can also request the paper on [Research Gate](https://www.researchgate.net/publication/342567284_Person_Following_Mobile_Robot_Using_Multiplexed_Detection_and_Tracking) or contact [authors](#contributors) (typically replies within a day)
+If you are using this repository please [cite](#citations) our [paper](https://link.springer.com/chapter/10.1007/978-981-15-3639-7_98) and star our repo. You can also request the paper on [Research Gate](https://www.researchgate.net/publication/342567284_Person_Following_Mobile_Robot_Using_Multiplexed_Detection_and_Tracking) or contact [authors](#contributors) (typically reply within a day)
 
 ## Table of contents
 - [Person Following Robot](#person-following-robot)
