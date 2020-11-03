@@ -7,6 +7,8 @@ This repository aims to make an algoirthm to follow a person autonomously. This 
 
 If you are using this repository please [cite](#citations) our [paper](https://link.springer.com/chapter/10.1007/978-981-15-3639-7_98) and star our repo. You can also request the paper on [Research Gate](https://www.researchgate.net/publication/342567284_Person_Following_Mobile_Robot_Using_Multiplexed_Detection_and_Tracking) or contact [authors](#contributors) (typically reply within a day)
 
+Incase you find any problem with the code/repo do let us know by raising an issue. 
+
 ## Table of contents
 - [Person Following Robot](#person-following-robot)
 	- [Table of contents](#table-of-contents)
@@ -58,6 +60,7 @@ Setting up remote server for faster processing:
 
 ### Run the tracking code
 - First install all requirements using `pip3 install requirements.txt`. Hardware requirements can be found [here](#dependencies)
+- Download Yolov3 weight file from [here](https://pjreddie.com/media/files/yolov3.weights) and place it inside the cloned repo. 
 - Run the [follow.py](follow.py) code to see the output
 
 ## Dependencies
