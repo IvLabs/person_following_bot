@@ -61,7 +61,7 @@ Setting up remote server for faster processing:
 ### Run the tracking code
 - First install all requirements using `pip3 install requirements.txt`. Hardware requirements can be found [here](#dependencies)
 - Download Yolov3 weight file from [here](https://pjreddie.com/media/files/yolov3.weights) and place it inside the cloned repo. 
-- Run the [follow.py](follow.py) code to see the output
+- Run the [follow.py](follow.py) code to see the output. (Bash command: `python3 follow.py`)
 
 ## Dependencies
 
@@ -102,5 +102,3 @@ isbn="978-981-15-3639-7"
 ## Contributors
 - **Khush Agrawal** - [Website](https://khush3.github.io/)
 - **Rohit Lal** - [Website](http://take2rohit.github.io/)
-
-
