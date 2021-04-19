@@ -257,24 +257,10 @@ if __name__ == '__main__':
 
 				img, yolo_box = yolo_output(frame.copy(),model,['person'], confidence, nms_thesh, CUDA, inp_dim)
 				cv2.imshow('yolo', cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-				# print('initial: ', yolo_box)
-				distance_list = []
-				person_in_range = []
-				for i in yolo_box:
-					curr_dist = get_smoother(depth_frame, i)
-					distance_list.append(curr_dist)	
-					if 1 < curr_dist < 8:
-						person_in_range.append(i)
-						# yolo_box.remove(i)
-						# print('distance : {:4.2f}'.format(curr_dist))
-
-
-				# print('final: ', person_in_range)
-
+				
 				initBB, trueBB = get_coordinates(yolo_box, x, y, x+w, y+h)
 				tracker = OPENCV_OBJECT_TRACKERS[algo]()
 				tracker.init(frame, initBB)
-				# print('new tracker')
 				fps = (frame_)//(time.time()-a)
 				frame_ = 0
 				a = time.time()
